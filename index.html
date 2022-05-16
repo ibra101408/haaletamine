@@ -1,0 +1,30 @@
+<!--DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Haaletus</title>
+</head>
+<body>
+<h1>Voting</h1>
+<div id="table"></div>
+
+<script type="text/javascript">
+    var opts = {
+        url: 'http://localhost:3000/rows/'
+    };
+
+    fetch(opts)
+        .then((res) => {
+            if (res.ok) {
+                return res.json();
+            }
+        })
+        .then((rows) => {
+            for (let row of rows) {
+                // row will be a mysql row -- you can loop over these and do what you want with them
+            }
+        })
+        .catch(console.log);
+</script>
+</body>
+</html>-->
