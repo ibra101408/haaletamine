@@ -32,22 +32,22 @@ function executeQuery(sql, cb){
 function fetchData(res){
     executeQuery("SELECT * FROM haaletus", function (result){
         console.log(result);
-        response.write(`<table><tr>`);
+        res.write(`<table style="width: 50%"><tr>`);
         for(var column in result[0]){
-            res.write(`<td><label>` + column + `</label></td>`);
-            res.write("</tr>");
+            res.write(`<th>` + column +  `</th>`);
         }
+            res.write(`</tr>`);
+
         for(var row in result){
             res.write(`<tr>`);
-            for (var column in result[row]){
+            for (var column in result[row]) {
                 res.write(`<td><label>` + result[row][column] + `</label></td>`);
             }
-            res.write(`</tr>`);
+                res.write(`</tr>`);
         }
         res.end(`</table>`);
-    })
+    });
 }
-
 
 app.listen(3001, () => {
     console.log('Example app listening on port 3000!');
