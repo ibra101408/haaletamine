@@ -32,6 +32,8 @@ function executeQuery(sql, cb){
 function fetchData(res){
     executeQuery("SELECT * FROM haaletus", function (result){
         console.log(result);
+        res.write(`<h1>Voting</h1>`);
+        res.write(`<button>pool</button>`)
         res.write(`<table style="width: 50%"><tr>`);
         for(var column in result[0]){
             res.write(`<th>` + column +  `</th>`);
@@ -41,33 +43,26 @@ function fetchData(res){
         for(var row in result){
             res.write(`<tr>`);
             for (var column in result[row]) {
-                res.write(`<td><label>` + result[row][column] + `</label></td>`);
+                res.write(`<td><label>` + result[row][column] +  `</label></td>`);
             }
                 res.write(`</tr>`);
         }
         res.end(`</table>`);
+
     });
+
+    //res.write(`<button onclick="myFunk()" id="but">ok</button>`);
 }
 
+
 app.listen(3001, () => {
-    console.log('Example app listening on port 3000!');
+    console.log('Example app listening on port 3001!');
 });
 
 
 
 
 
-
-
-
-/*        if(err) throw err;
-        con.query("SELECT nimi, otsus, aeg FROM haaletus", function (err, result, fields) {
-            if (err) throw err;
-        console.log(result);
-        });
-    });
-module.exports = con;
-*/
 
 
 
